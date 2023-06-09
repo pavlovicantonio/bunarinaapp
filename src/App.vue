@@ -3,7 +3,7 @@
     <nav>
       <ul class="list-container" style="text-align: center;">
         <li class="nav-item">
-          <router-link to="/">Home</router-link>
+          <router-link to="/"><v-icon v-if="store.currentUser!=null">mdi-home</v-icon>Home</router-link>
         </li>
         <li v-if="!store.currentUser" class="nav-item">
           <router-link to="/login">Login</router-link>
@@ -12,19 +12,19 @@
           <router-link to="/signup">Signup</router-link>
         </li>
         <li v-if="store.currentUser!=null">
-          <router-link to="/food">Food</router-link>
+          <router-link to="/food"><v-icon v-if="store.currentUser!=null">mdi-hamburger</v-icon>Food</router-link>
         </li>
         <li v-if="store.currentUser!=null">
-          <router-link to="/drinks">Drinks</router-link>
+          <router-link to="/drinks"><v-icon v-if="store.currentUser!=null">mdi-cup</v-icon>Drinks</router-link>
         </li>
         <li v-if="store.currentUser!=null">
-          <router-link to="/reservations">Reservations</router-link>
+          <router-link to="/reservations"><v-icon v-if="store.currentUser!=null">mdi-book-open-page-variant</v-icon>Reservations</router-link>
         </li>
-        <li v-if="store.currentUser!=null">
-          <router-link to="/profile">Profile</router-link>
+        <li class="profile-li" v-if="store.currentUser!=null">
+          <router-link to="/profile"><v-icon v-if="store.currentUser!=null">mdi-account</v-icon>Profile</router-link>
         </li>
-        <li>
-          <a v-if="store.currentUser" href="#" @click.prevent="logout()">Logout</a>
+        <li class="logout-li">
+          <a v-if="store.currentUser" href="#" @click.prevent="logout()"><v-icon v-if="store.currentUser!=null">mdi-logout</v-icon>Logout</a>
         </li>
         <li v-if="store.currentUser!=null">
           
@@ -70,6 +70,9 @@ export default{
 
 
 <style lang="scss">
+v-icon{
+  padding-right: 5px;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -90,9 +93,20 @@ nav {
     }
   }
 }
-
+.profile-li,.logout-li{
+  position: absolute;
+}
+.profile-li{
+  right: 100px;
+}
+.logout-li{
+  right: 10px;
+}
 body{
   background-color: #DDE6ED;
+}
+li{
+  padding-right: 20px;
 }
 
 .list-container {
