@@ -13,7 +13,10 @@ BunarinaApp je aplikacija Buffeta Bunarine. Aplikacija nudi mogućnost prijave i
 - Četvrti commit (8.6.2023.) - Aplikacija je u izradi već mjesec dana cca., ali prvi put je pushana 8.6. nakon što ste rekli na zadnjem predavanju da moramo svako toliko commitat, do tada to nismo znali.
 
 - Peti i šesti commit (9.6.2023.) - Ubačena ponuda hrane, ažuriranje README.md datoteke
+<<<<<<< HEAD
 
 - Sedmi commit (11.6.2023.) - Ubačena ponuda pićem , započet profile view i rezervations view.
+=======
+>>>>>>> 8e50d423ac16f0bdb56e7d5dd4a566ce35c905b9
 
 ---
