@@ -1,65 +1,58 @@
 <template>
+    <div>
     <v-card class="profile_card">
-        <v-card-title>Profile</v-card-title>
-        <v-table>
-            <t-body>
-                <tr>
-                    <td style="text-align: left;">First name:</td>
-                    <td><v-text-field v-model="user.firstName"></v-text-field></td>
-                </tr>
-                <tr>
-                    <td>Last name:</td>
-                    <td><v-text-field></v-text-field></td>
-                </tr>
-                <tr>
-                    <td>E-mail:</td>
-                    <td><v-text-field v-model="store.currentUser" disabled></v-text-field></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><v-text-field v-model="store.currentUserPassword"></v-text-field></td>
-                </tr>
-            </t-body>
-        </v-table>
-    </v-card>
+      <v-card-title style="font-weight: bold;">User profile</v-card-title>
+      <div v-for="attribute in attributes" :key="attribute.uid">
+       First name: {{ attribute.firstName }}
+        <br>
+       Last name:{{ attribute.lastName }}
+        <br>
+       Email: {{ attribute.email }}
+        <br>
+       Password: {{ attribute.password }}
+      </div>
+      <v-btn @click="deleteAccount()">Delete account</v-btn>
+  </v-card>
+  </div>
 </template>
 
 <script>
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
+import store from '../store';
 
 export default {
-    data() {
-        return {
-            user: {
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: ''
-            }
-        };
-    },
-    mounted() {
-        this.getCurrentUser();
-    },
-    methods: {
-        getCurrentUser() {
-            const currentUser = firebase.auth().currentUser;
-            if (currentUser) {
-                const { displayName, email } = currentUser;
-
-                // Ako displayName ima format "Ime Prezime", razdvojite ga na ime i prezime
-                const [firstName, lastName] = displayName.split(' ');
-
-                this.user.firstName = firstName;
-                this.user.lastName = lastName;
-                this.user.email = email;
-                this.user.password = '********';
-            }
-        }
+  data() {
+    return {
+      attributes: [],
+    };
+  },
+  methods: {
+    fetchData() {
+      const db = firebase.firestore();
+      db.collection('user') // Replace 'your-collection' with the actual name of your collection
+        .where('email', '==', store.currentUser) // Replace 'oneVariable' with the name of the field you want to match
+        .get()
+        .then(querySnapshot => {
+          const attributes = [];
+          querySnapshot.forEach(doc => {
+            const attribute = doc.data(); // Retrieve the attribute data
+            attributes.push(attribute);
+          });
+          this.attributes = attributes; // Update the component's data with the retrieved attributes
+        })
+        .catch(error => {
+          console.error('Error retrieving attributes:', error);
+        });
     }
+  },
+  created() {
+    this.fetchData();
+  }
 };
 </script>
+
 
 <style>
 .profile_card {
@@ -69,5 +62,8 @@ export default {
     margin-left: auto;
     margin-right: auto;
     margin-top: 15px;
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
 </style>
