@@ -69,6 +69,21 @@
           }).catch(function(error){console.error("An error occurred during registration", error);})
         },
 
+        saveUser() {
+          const db = firebase.firestore();
+          const usersCollection = db.collection('user');
+
+          // Create a new user object
+          const user = {
+            firstName: this.firstname,
+            lastName: this.lastname,
+            email: this.email,
+            password: this.password
+          };
+
+          // Save the user to Firestore
+          usersCollection.add(user);
+        },
         clear_d(){
           this.firstname = null,
           this.lastname = null,
@@ -77,9 +92,11 @@
         },
         main_f(){
           this.signup();
+          this.saveUser();
           this.clear_d();
         },
-      },
+        
+      }
     }
   </script>
   

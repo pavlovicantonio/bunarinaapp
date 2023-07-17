@@ -40,12 +40,9 @@ import store from '@/store';
 import {firebase} from '../firebase';
 firebase.auth().onAuthStateChanged((user) => {
   if (user){
-    console.log(user.email);
     store.currentUser = user.email;
-    store.currentUserName = user.displayName
   }
   else{
-    console.log('No user')
     store.currentUser = null;
   }
 })
@@ -103,7 +100,7 @@ nav {
   right: 10px;
 }
 body{
-  background-color: #DDE6ED;
+  background-color:#DDE6ED;
 }
 li{
   padding-right: 20px;
