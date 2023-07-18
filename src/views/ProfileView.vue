@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
   <v-card class="profile_card">
     <v-card-title style="font-weight: bold;">User profile</v-card-title>
@@ -17,6 +18,23 @@
       </v-btn>
 </v-card>
 </div>
+=======
+    <div>
+    <v-card class="profile_card">
+      <v-card-title style="font-weight: bold;">User profile</v-card-title>
+      <div v-for="attribute in attributes" :key="attribute.uid">
+       First name: {{ attribute.firstName }}
+        <br>
+       Last name:{{ attribute.lastName }}
+        <br>
+       Email: {{ attribute.email }}
+        <br>
+       Password: {{ attribute.password }}
+      </div>
+      <v-btn @click="deleteAccount()">Delete account</v-btn>
+  </v-card>
+  </div>
+>>>>>>> 9cb99b357873bb6ee89174a35189e9e50a1fca96
 </template>
 
 <script>
@@ -48,6 +66,7 @@ export default {
         .catch(error => {
           console.error('Error retrieving attributes:', error);
         });
+<<<<<<< HEAD
     },
     deleteAcc(){
       const user = firebase.auth().currentUser;
@@ -73,6 +92,13 @@ export default {
     this.fetchData();
   },
   
+=======
+    }
+  },
+  created() {
+    this.fetchData();
+  }
+>>>>>>> 9cb99b357873bb6ee89174a35189e9e50a1fca96
 };
 </script>
 
