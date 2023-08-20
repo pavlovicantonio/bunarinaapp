@@ -3,7 +3,7 @@
     <nav>
       <ul class="list-container" style="text-align: center;">
         <li class="nav-item">
-          <router-link to="/"><v-icon v-if="store.currentUser!=null">mdi-home</v-icon>Home</router-link>
+          <router-link to="/"><v-icon v-if="store.currentUser != null">mdi-home</v-icon>Home</router-link>
         </li>
         <li v-if="!store.currentUser" class="nav-item">
           <router-link to="/login">Login</router-link>
@@ -11,53 +11,55 @@
         <li v-if="!store.currentUser" class="nav-item">
           <router-link to="/signup">Signup</router-link>
         </li>
-        <li v-if="store.currentUser!=null">
-          <router-link to="/food"><v-icon v-if="store.currentUser!=null">mdi-hamburger</v-icon>Food</router-link>
+        <li v-if="store.currentUser != null">
+          <router-link to="/food"><v-icon v-if="store.currentUser != null">mdi-hamburger</v-icon>Food</router-link>
         </li>
-        <li v-if="store.currentUser!=null">
-          <router-link to="/drinks"><v-icon v-if="store.currentUser!=null">mdi-cup</v-icon>Drinks</router-link>
+        <li v-if="store.currentUser != null">
+          <router-link to="/drinks"><v-icon v-if="store.currentUser != null">mdi-cup</v-icon>Drinks</router-link>
         </li>
-        <li v-if="store.currentUser!=null">
-          <router-link to="/reservations"><v-icon v-if="store.currentUser!=null">mdi-book-open-page-variant</v-icon>Reservations</router-link>
+        <li v-if="store.currentUser != null">
+          <router-link to="/reservations"><v-icon
+              v-if="store.currentUser != null">mdi-book-open-page-variant</v-icon>Reservations</router-link>
         </li>
-        <li class="profile-li" v-if="store.currentUser!=null">
-          <router-link to="/profile"><v-icon v-if="store.currentUser!=null">mdi-account</v-icon>Profile</router-link>
+        <li class="profile-li" v-if="store.currentUser != null">
+          <router-link to="/profile"><v-icon v-if="store.currentUser != null">mdi-account</v-icon>Profile</router-link>
         </li>
         <li class="logout-li">
-          <a v-if="store.currentUser" href="#" @click.prevent="logout()"><v-icon v-if="store.currentUser!=null">mdi-logout</v-icon>Logout</a>
+          <a v-if="store.currentUser" href="#" @click.prevent="logout()"><v-icon
+              v-if="store.currentUser != null">mdi-logout</v-icon>Logout</a>
         </li>
-        <li v-if="store.currentUser!=null">
-          
+        <li v-if="store.currentUser != null">
+
         </li>
       </ul>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
 import store from '@/store';
-import {firebase} from '../firebase';
+import { firebase } from '../firebase.js';
 firebase.auth().onAuthStateChanged((user) => {
-  if (user){
+  if (user) {
     store.currentUser = user.email;
   }
-  else{
+  else {
     store.currentUser = null;
   }
 })
 
-export default{
+export default {
   name: 'App',
-  data(){
-    return{
+  data() {
+    return {
       store,
     }
   },
-  methods:{
-    logout(){
+  methods: {
+    logout() {
       firebase.auth().signOut().then(() => {
-        this.$router.push({name:'login'});
+        this.$router.replace({ name: 'login' });
       })
     },
   }
@@ -67,9 +69,10 @@ export default{
 
 
 <style lang="scss">
-v-icon{
+v-icon {
   padding-right: 5px;
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -90,19 +93,25 @@ nav {
     }
   }
 }
-.profile-li,.logout-li{
+
+.profile-li,
+.logout-li {
   position: absolute;
 }
-.profile-li{
+
+.profile-li {
   right: 100px;
 }
-.logout-li{
+
+.logout-li {
   right: 10px;
 }
-body{
-  background-color:#DDE6ED;
+
+body {
+  background-color: #DDE6ED;
 }
-li{
+
+li {
   padding-right: 20px;
 }
 
@@ -127,7 +136,8 @@ li{
   display: inline-block;
 }
 
-.dropbtn:hover, .dropbtn:focus {
+.dropbtn:hover,
+.dropbtn:focus {
   background-color: #2980B9;
 }
 
@@ -142,7 +152,7 @@ li{
   background-color: #f1f1f1;
   min-width: 160px;
   overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -153,7 +163,10 @@ li{
   display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown a:hover {
+  background-color: #ddd;
+}
 
-.show {display: block;}
-</style>
+.show {
+  display: block;
+}</style>

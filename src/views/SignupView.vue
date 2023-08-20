@@ -43,7 +43,7 @@
            </v-col>
         </v-row>
         <p>Already a member? <router-link to="login">Login!</router-link></p>
-        <v-btn type="button" class="mt-2" @click="main_f">SIGNUP</v-btn>
+        <v-btn type="button" class="mt-2" @click="signup()">SIGNUP</v-btn>
       </v-form>
     </v-sheet>
   </template>
@@ -59,6 +59,7 @@
           lastname: '',
           email: '',
           password: '',
+          emailUsage: false,
         };
       },
       methods:  {
@@ -66,7 +67,9 @@
           firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then(() => {
             alert("Registration successfully!");
             this.$router.replace({name:'home'})
-          }).catch(function(error){console.error("An error occurred during registration", error);})
+          }).catch(function(error){console.error("An error occurred during registration", error);});
+          this.saveUser();
+          this.clear_d();
         },
 
         saveUser() {
@@ -89,11 +92,6 @@
           this.lastname = null,
           this.email = null,
           this.password = null;
-        },
-        main_f(){
-          this.signup();
-          this.saveUser();
-          this.clear_d();
         },
         
       }
