@@ -4,7 +4,6 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
-import 'path-browserify'; // Import the path module for browser
 Vue.config.productionTip = false
 
 new Vue({
