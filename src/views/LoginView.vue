@@ -18,8 +18,8 @@
             v-model="password"
             label="Password" 
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="showPassword ? 'text' : 'password'"
-            @click:append="showPassword = !showPassword"
+              :type="showPassword ? 'text' : 'password'"
+              @click:append="showPassword = !showPassword"
           ></v-text-field>
          </v-col>
       </v-row>
@@ -37,6 +37,7 @@ import {firebase} from '../../firebase'
       return{
         email:'',
         password:'',
+        showPassword: false
       }
     },
     methods:{

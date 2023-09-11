@@ -50,6 +50,7 @@
   
   <script>
   import {firebase} from '../../firebase';
+  import 'firebase/auth';
 
     export default {
       name: 'SignupView',
@@ -59,7 +60,7 @@
           lastname: '',
           email: '',
           password: '',
-          emailUsage: false,
+          showPassword: false
         };
       },
       methods:  {
@@ -71,21 +72,35 @@
           this.saveUser();
           this.clear_d();
         },
+        async isEmailRegistered(email) {
+          try {
+            const methods = await firebase.auth().fetchSignInMethodsForEmail(email);
+            return methods.length > 0;
+          } catch (error) {
+            console.error('Error checking email:', error);
+            return false;
+          }
+        },
+        async saveUser() {
+          const email = this.email;
+          const isRegistered = await this.isEmailRegistered(email);
 
-        saveUser() {
-          const db = firebase.firestore();
-          const usersCollection = db.collection('user');
+          if(isRegistered)
+            alert("Email is already registered. Please use a different email.");
+          
+          else{
+              const db = firebase.firestore();
+              const usersCollection = db.collection('user');
 
-          // Create a new user object
-          const user = {
-            firstName: this.firstname,
-            lastName: this.lastname,
-            email: this.email,
-            password: this.password
-          };
-
-          // Save the user to Firestore
-          usersCollection.add(user);
+              const user = {
+                firstName: this.firstname,
+                lastName: this.lastname,
+                email: this.email,
+                password: this.password
+              };
+              
+              usersCollection.add(user);
+            }
         },
         clear_d(){
           this.firstname = null,

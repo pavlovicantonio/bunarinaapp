@@ -7,6 +7,8 @@ import ProfileView from '../views/ProfileView.vue'
 import FoodView from '../views/FoodView.vue'
 import DrinksView from '../views/DrinksView.vue'
 import ReservationsView from '../views/ReservationsView'
+import ResetPasswordView from '../views/ResetPasswordView'
+import ResetEmailView from '../views/ResetEmailView'
 Vue.use(VueRouter)
 
 const routes = [
@@ -44,7 +46,17 @@ const routes = [
     path: '/reservations',
     name: 'reservations',
     component: ReservationsView
-  }
+  },
+  {
+    path: '/resetpassword',
+    name: 'resetpassword',
+    component: ResetPasswordView
+  },
+  {
+    path: '/resetemail',
+    name: 'resetemail',
+    component: ResetEmailView
+  },
 ]
 
 const router = new VueRouter({

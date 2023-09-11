@@ -46,13 +46,13 @@
  import {db} from '../../firebase';
  
  export default {
+  async beforeMount() {
+      await this.getDrinkItems();
+  },
    data() {
      return {
        drinksList: []
      };
-   },
-   mounted() {
-     this.getDrinkItems();
    },
    computed: {
     sortedHotDrinks() {
