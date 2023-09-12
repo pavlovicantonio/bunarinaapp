@@ -70,7 +70,6 @@
             this.$router.replace({name:'home'})
           }).catch(function(error){console.error("An error occurred during registration", error);});
           this.saveUser();
-          this.clear_d();
         },
         async isEmailRegistered(email) {
           try {

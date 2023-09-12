@@ -97,7 +97,7 @@ export default {
             numberOfPeople: this.numberOfPeople,
           };
 
-        emailjs.send("service_6rpv5ja", "template_fd795e9", templateParams, "P8lrANXaKfOvV-_KN").then(response => {
+        emailjs.send("service_t92vjus", "template_gysyn4s", templateParams, "4sYkjApF2Vd8ipnO6").then(response => {
           console.log("Email uspješno poslat!", response);
         }).catch(error => {
           console.error("Greška prilikom slanja emaila:", error);
@@ -135,12 +135,11 @@ export default {
           email: store.currentUser,
         };
 
-        await emailjs.send("service_6rpv5ja", "template_rpkyw5j", templateParams, "P8lrANXaKfOvV-_KN").then(response => {
+        await emailjs.send("service_t92vjus", "template_v9hkzn1", templateParams, "4sYkjApF2Vd8ipnO6").then(response => {
             console.log("Email uspješno otkazan!", response);
           }).catch(error => {
             console.error("Greška prilikom slanja emaila:", error);
           });      
-
       } catch (error) {
         console.error('Error canceling reservation:', error);
         alert("Failed to cancel reservation. Please try again.");

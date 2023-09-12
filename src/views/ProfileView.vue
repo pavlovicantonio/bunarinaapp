@@ -53,6 +53,9 @@
   import store from '../store';
   
   export default {
+    async beforeMount() {
+      await this.fetchData();
+    },
     data() {
       return {
         attributes: [],
@@ -67,6 +70,7 @@
     methods: {
       fetchData() {
         const db = firebase.firestore();
+
         db.collection('user').where('email', '==', firebase.auth().currentUser.email).get().then(querySnapshot => {
             const attributes = [];
             querySnapshot.forEach(doc => {
@@ -119,11 +123,7 @@
                     });
                     this.$router.push({name:'home'});
       }
-  },
-    mounted() {
-      this.fetchData();
-    },
-    
+  }
   };
   </script>
   
