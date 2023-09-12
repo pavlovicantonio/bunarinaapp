@@ -33,8 +33,8 @@
               :type="showPassword ? 'text' : 'password'"
               @click:append="showPassword = !showPassword" style="width: 35%; display: inline-block; margin-left: 15px;" v-model="attribute.password" :disabled="true"></v-text-field>
       </div>
-       <p>If you want to reset your password, click <a href="resetpassword">here</a>!</p>
-       <p>If you want to reset your email, click <a href="resetemail">here</a>!</p>
+       <p>If you want to reset your password, click <router-link to="/resetpassword">here</router-link>!</p>
+       <p>If you want to reset your email, click <router-link to="/resetemail">here</router-link>!</p>
       <v-btn  @click="deleteAcc()" outlined style="background-color: #D21312; color: white;">Delete account
             <v-icon dark right>delete</v-icon>
         </v-btn>
