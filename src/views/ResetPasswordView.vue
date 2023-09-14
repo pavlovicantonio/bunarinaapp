@@ -20,6 +20,11 @@ export default{
     },
     methods:{
         resetPassword(){
+            if(this.newPassword.length<6){
+                alert("Password should be at least 6 characters long!");
+                return;
+            }
+            
             const auth = firebase.auth();
             const db = firebase.firestore();
 

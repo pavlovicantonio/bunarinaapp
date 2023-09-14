@@ -3,29 +3,24 @@
      <v-card class="vcard">
         <v-card-title style="font-weight: bold; font-size: 25px;">Hot Drinks and coffee</v-card-title>
         <div v-for="item in sortedHotDrinks" :key="item.naziv">
-            <v-card-title>{{ item.naziv }}</v-card-title>
-            <v-card-text style="text-align: left;">Price: {{ item.cijena }} €</v-card-text>
+            <v-card-title>{{ item.naziv }} - {{ item.cijena }} €</v-card-title>
         </div>
      </v-card>
      <v-card class="vcard">
-        <v-card-title style="font-weight: bold; font-size: 25px;">No alcohol drinks</v-card-title>
+        <v-card-title style="font-weight: bold; font-size: 25px;">Non alcoholic drinks</v-card-title>
         <div v-for="item in sortednoAlcoholDrinks" :key="item.naziv">
-            <v-card-title>{{ item.naziv }}</v-card-title>
-            <v-card-text style="text-align: left;">Price: {{ item.cijena }} €</v-card-text>
+            <v-card-title>{{ item.naziv }} - {{ item.cijena }} €</v-card-title>
         </div>
      </v-card>
      <v-card class="vcard">
-        <v-card-title style="font-weight: bold; font-size: 25px;">Shots</v-card-title>
+        <v-card-title style="font-weight: bold; font-size: 25px;">Shots </v-card-title>
         <div v-for="item in sortedShotsDrinks" :key="item.naziv">
-            <v-card-title>{{ item.naziv }}</v-card-title>
-            <v-card-text style="text-align: left;">Price: {{ item.cijena }} €</v-card-text>
-        </div>
+            <v-card-title>{{ item.naziv }} - {{ item.cijena }} €</v-card-title>        </div>
      </v-card>
      <v-card class="vcard">
         <v-card-title style="font-weight: bold; font-size: 25px;">Beer</v-card-title>
         <div v-for="item in sortedBeerDrinks" :key="item.naziv">
-            <v-card-title>{{ item.naziv }}</v-card-title>
-            <v-card-text style="text-align: left;">Price: {{ item.cijena }} €</v-card-text>
+            <v-card-title>{{ item.naziv }} - {{ item.cijena }} €</v-card-title>
         </div>
      </v-card>
    </div>

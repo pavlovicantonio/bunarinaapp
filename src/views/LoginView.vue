@@ -42,10 +42,14 @@ import {firebase} from '../../firebase'
     },
     methods:{
       login(){
+        if(this.email.includes('@')==false){
+          alert("Email should contain @!")
+          return;
+        }
         firebase.auth().signInWithEmailAndPassword(this.email,this.password).then(() => {
             alert("Login successful!");
             this.$router.replace({name:'home'})
-          }).catch(function(error){console.error("An error occurred during login", error);})
+          }).catch(function(error){alert("Incorrect email or password!", error);})
         },
     }
   }

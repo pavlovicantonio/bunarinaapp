@@ -16,11 +16,14 @@ export default{
     data(){
         return{
             newEmail:'',
-            
         }
     },
     methods:{
         resetEmail(){
+            if(this.newEmail.includes('@') == false){
+                alert("Email should contain @!")
+                return;
+            }
             const auth = firebase.auth();
             const db = firebase.firestore();
 

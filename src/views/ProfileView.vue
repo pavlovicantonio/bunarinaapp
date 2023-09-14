@@ -118,9 +118,11 @@
                                lastName:  this.lastName})
                             .then(() => {
                             console.log('Ime i prezime uspješno ažurirani u Firestore bazi podataka.');
+                            alert("Profile updated succesfully!")
                             });
                         }
                     });
+                    
                     this.$router.push({name:'home'});
       }
   }

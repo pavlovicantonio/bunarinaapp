@@ -60,11 +60,24 @@
           lastname: '',
           email: '',
           password: '',
-          showPassword: false
+          showPassword: false,
         };
       },
       methods:  {
         signup(){
+          if(this.password.length<6 && this.email.includes('@')==false){
+            alert("Email should contain @ and password should be at least 6 characters long!");
+            return;
+          }
+          if(this.password.length<6){
+            alert("Password should be at least 6 characters long!");
+            return;
+          }
+          if(this.email.includes('@') == false){
+            alert("Email should contain @!");
+            return;
+          }
+  
           firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then(() => {
             alert("Registration successfully!");
             this.$router.replace({name:'home'})
@@ -108,7 +121,7 @@
           this.password = null;
         },
         
-      }
+      },
     }
   </script>
   
