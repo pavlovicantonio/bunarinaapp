@@ -16,18 +16,6 @@ Link na prototip aplikacije (dosta izmjene će biti u finalnom projektu u odnosu
 
 ---
 
-### Commits
-
-- Prva tri commita - Ažuriranje README datoteke
-
-- Četvrti commit (8.6.2023.) - Aplikacija je u izradi već mjesec dana cca., ali prvi put je pushana 8.6. nakon što ste rekli na zadnjem predavanju da moramo svako toliko commitat, do tada to nismo znali.
-
-- Peti i šesti commit (9.6.2023.) - Ubačena ponuda hrane, ažuriranje README.md datoteke
-<<<<<<< HEAD
-
-=======
->>>>>>> 9cb99b357873bb6ee89174a35189e9e50a1fca96
-
-- Sedmi commit (11.6.2023.) - Ubačena ponuda pićem , započet profile view i rezervations view.
+# BunarinaApp možete pronaći na <a href="https://bunarina.netlify.app/">ovom linku</a> 
 
 ---
